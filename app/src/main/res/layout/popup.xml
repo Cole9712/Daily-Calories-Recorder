@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/popupLayout_id"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <RelativeLayout
+            android:background="#FFFFFF"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="25dp">
+
+            <TextView
+                android:id="@+id/title"
+                android:text="@string/enter_item"
+                android:textStyle="italic"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/foodItem"
+                android:paddingVertical="16dp"
+                android:layout_below="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/food_name_here"
+                tools:ignore="Autofill" />
+
+            <EditText
+                android:id="@+id/itemQuantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/foodItem"
+                android:hint="@string/quantity_goes_here"
+                android:inputType="numberSigned"
+                android:paddingTop="30dp"
+                android:paddingBottom="16dp"
+                android:autofillHints="0"/>
+
+            <TextView
+                android:id="@+id/or"
+                android:text="@string/or"
+                android:textStyle="italic|bold"
+                android:textSize="22sp"
+                android:layout_below="@id/itemQuantity"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/itemWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/or"
+                android:hint="@string/enter_item_weight_in_gram"
+                android:inputType="numberSigned"
+                android:paddingVertical="16dp"
+                android:autofillHints="0"/>
+
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/itemWeight"
+                android:background="@color/colorAccent"
+                android:paddingTop="0dp"
+                android:text="@string/save"
+
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

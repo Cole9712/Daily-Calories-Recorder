@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Daily Nutrition Helper</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="add_your_meal">Add your meal...</string>
+    <string name="enter_item">Enter item</string>
+    <string name="food_name_here">Food name here</string>
+    <string name="quantity_goes_here">Enter item quantity</string>
+    <string name="or">OR</string>
+    <string name="enter_item_weight_in_gram">Enter item weight (in grams)</string>
+    <string name="save">SAVE</string>
+    <string name="sure">Are you sure to delete this item?</string>
+    <string name="no">NO</string>
+    <string name="yes">YES</string>
+    <string name="update">UPDATE</string>
+</resources>
