@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/before_you_start"
+        android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -51,11 +52,12 @@
         app:layout_constraintTop_toBottomOf="@+id/welcomeHint" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/genderSpinner"
         android:layout_width="0dp"
         android:layout_height="38dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
+        android:entries="@array/gender"
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="@+id/nameInput"
@@ -70,10 +72,10 @@
         android:ems="10"
         android:hint="@string/age"
         android:inputType="numberSigned|number"
-        app:layout_constraintBottom_toBottomOf="@+id/spinner"
+        app:layout_constraintBottom_toBottomOf="@+id/genderSpinner"
         app:layout_constraintEnd_toEndOf="@+id/nameInput"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/spinner" />
+        app:layout_constraintTop_toTopOf="@+id/genderSpinner" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -92,8 +94,8 @@
         android:importantForAutofill="no"
         android:inputType="numberSigned|numberDecimal"
         app:layout_constraintEnd_toEndOf="@+id/ageInput"
-        app:layout_constraintStart_toStartOf="@+id/spinner"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintStart_toStartOf="@+id/genderSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/genderSpinner" />
 
     <EditText
         android:id="@+id/heightInput"
@@ -109,10 +111,11 @@
         app:layout_constraintTop_toBottomOf="@+id/weightInput" />
 
     <Spinner
-        android:id="@+id/activityPicker"
+        android:id="@+id/activitySpinner"
         android:layout_width="0dp"
         android:layout_height="38dp"
         android:layout_marginTop="16dp"
+        android:entries="@array/activityLevel"
         app:layout_constraintEnd_toEndOf="@+id/heightInput"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/heightInput"
@@ -124,12 +127,24 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@color/colorAccent"
+        android:background="@color/colorPrimaryDark"
         android:text="@string/save"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/activityPicker"
-        app:layout_constraintStart_toStartOf="@+id/activityPicker"
-        app:layout_constraintTop_toBottomOf="@+id/activityPicker"
+        app:layout_constraintEnd_toEndOf="@+id/activitySpinner"
+        app:layout_constraintStart_toStartOf="@+id/activitySpinner"
+        app:layout_constraintTop_toBottomOf="@+id/activitySpinner"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/caution"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/caution"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/saveButton"
+        app:layout_constraintStart_toStartOf="@+id/saveButton"
+        app:layout_constraintTop_toBottomOf="@+id/saveButton"
+        app:layout_constraintVertical_bias="0.72" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

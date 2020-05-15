@@ -34,4 +34,5 @@
     <string name="age">Age</string>
     <string name="weight_in_kilograms">Weight (in kilograms)</string>
     <string name="height_in_meters">Height (in meters)</string>
+    <string name="caution">Nutritional Needs calculations are based on National Institutes of Health/Institute of Medicine Healthy Macronutrient Distribution and provided by Welltech Solutions. Calculators are appropriate for healthy, non-pregnant adults 19 and older.</string>
 </resources>

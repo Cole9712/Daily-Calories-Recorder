@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         skipToListActivity();
-        startActivity(new Intent(MainActivity.this, UserInfoActivity.class));
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         if (databaseHandler.getItemCount()>=1) {
             startActivity(new Intent(MainActivity.this,ListViewActivity.class));
             finish();
+        } else if (databaseHandler.getItemCount() < 1) {
+            startActivity(new Intent(MainActivity.this, UserInfoActivity.class));
         }
     }
 
