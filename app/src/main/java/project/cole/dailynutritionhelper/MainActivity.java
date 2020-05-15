@@ -2,6 +2,7 @@ package project.cole.dailynutritionhelper;
 
 import android.app.ListActivity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -55,10 +56,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void skipToListActivity() {
+        SharedPreferences sharedPreferences = getSharedPreferences("user_info", MODE_PRIVATE);
         if (databaseHandler.getItemCount()>=1) {
             startActivity(new Intent(MainActivity.this,ListViewActivity.class));
             finish();
-        } else if (databaseHandler.getItemCount() < 1) {
+        } else if (sharedPreferences.getString("userName", null) == null) {
             startActivity(new Intent(MainActivity.this, UserInfoActivity.class));
         }
     }

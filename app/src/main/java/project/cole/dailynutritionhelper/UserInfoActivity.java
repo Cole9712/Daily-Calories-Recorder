@@ -1,11 +1,9 @@
 package project.cole.dailynutritionhelper;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -18,19 +16,17 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.text.MessageFormat;
-
 public class UserInfoActivity extends AppCompatActivity {
     public static final String tableName = "user_info";
-    ConstraintLayout userInputContainer;
-    AnimationDrawable animationDrawable;
-    EditText userName;
-    EditText userAge;
-    Spinner userGender;
-    Spinner userActivityLevel;
-    EditText userWeight;
-    EditText userHeight;
-    Button saveButton;
+    private ConstraintLayout userInputContainer;
+    private AnimationDrawable animationDrawable;
+    private EditText userName;
+    private EditText userAge;
+    private Spinner userGender;
+    private Spinner userActivityLevel;
+    private EditText userWeight;
+    private EditText userHeight;
+    private Button saveButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,16 +47,18 @@ public class UserInfoActivity extends AppCompatActivity {
         animationDrawable = (AnimationDrawable) userInputContainer.getBackground();
         animationDrawable.setEnterFadeDuration(5000);
         animationDrawable.setExitFadeDuration(2000);
+        animationDrawable.setOneShot(false);
+
 
         userName.setText(sharedPreferences.getString("userName", null));
         if (sharedPreferences.getString("userName", null) != null) {
             if (sharedPreferences.getInt("userGenderPos", 0) == 1) {
-                userGender.setSelection(1);
+                userGender.setSelection(1, true);
             }
             userAge.setText(String.valueOf(sharedPreferences.getInt("userAge", 19)));
             userWeight.setText(sharedPreferences.getString("userWeightInKgs", null));
             userHeight.setText(sharedPreferences.getString("userHeightInMeters", null));
-            userActivityLevel.setSelection(sharedPreferences.getInt("userActivityLevelPos", 0), false);
+            userActivityLevel.setSelection(sharedPreferences.getInt("userActivityLevelPos", 0), true);
         }
 
         userGender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -110,7 +108,7 @@ public class UserInfoActivity extends AppCompatActivity {
 
     }
 
-    private void saveUserInfo(final View v) {
+    private void saveUserInfo(View v) {
         SharedPreferences sharedPreferences = getSharedPreferences(tableName, MODE_PRIVATE);
         final SharedPreferences.Editor editor = sharedPreferences.edit();
         double userBMR = 0;
@@ -170,13 +168,7 @@ public class UserInfoActivity extends AppCompatActivity {
         editor.apply();
 
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Snackbar.make(v, "Saved Successfully", BaseTransientBottomBar.LENGTH_SHORT);
-                finish();
-            }
-        }, 1100);
+        finish();
 
     }
 
