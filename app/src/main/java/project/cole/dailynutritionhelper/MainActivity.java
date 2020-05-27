@@ -1,6 +1,5 @@
 package project.cole.dailynutritionhelper;
 
-import android.app.ListActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -19,8 +18,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.apache.commons.lang3.math.NumberUtils;
-
-import java.util.List;
 
 import project.cole.dailynutritionhelper.data.DatabaseHandler;
 import project.cole.dailynutritionhelper.model.Item;
@@ -115,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_bottom, menu);
         return true;
     }
 
