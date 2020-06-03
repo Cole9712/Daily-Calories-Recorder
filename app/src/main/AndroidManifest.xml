@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/respect_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UserInfoActivity"></activity>
+        <activity android:name=".AutoTextActivity"></activity>
+        <activity android:name=".FavListActivity" />
+        <activity android:name=".UserInfoActivity" />
         <activity android:name=".ListViewActivity" />
         <activity
             android:name=".MainActivity"

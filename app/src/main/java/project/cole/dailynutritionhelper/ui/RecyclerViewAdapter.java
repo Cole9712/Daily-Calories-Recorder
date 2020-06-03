@@ -21,7 +21,7 @@ import java.text.MessageFormat;
 import java.util.List;
 
 import project.cole.dailynutritionhelper.R;
-import project.cole.dailynutritionhelper.data.DatabaseHandler;
+import project.cole.dailynutritionhelper.data.UserMealDatabaseHandler;
 import project.cole.dailynutritionhelper.model.Item;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
@@ -130,8 +130,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                                 item.setFoodQuantity(NumberUtils.toInt(itemQuantity.getText().toString().trim()));
                                 item.setFoodWeightInGrams(NumberUtils.toInt(itemWeight.getText().toString().trim()));
 
-                                DatabaseHandler databaseHandler = new DatabaseHandler(context);
-                                databaseHandler.updateItem(item);
+                                UserMealDatabaseHandler userMealDatabaseHandler = new UserMealDatabaseHandler(context);
+                                userMealDatabaseHandler.updateItem(item);
                                 notifyItemChanged(getAdapterPosition(), item);
                                 Snackbar.make(v, "Food Information Saved", Snackbar.LENGTH_SHORT).show();
                                 new Handler().postDelayed(new Runnable() {
@@ -163,7 +163,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                         @Override
                         public void onClick(View v) {
                             id = itemList.get(getAdapterPosition()).getId();
-                            DatabaseHandler db = new DatabaseHandler(context);
+                            UserMealDatabaseHandler db = new UserMealDatabaseHandler(context);
                             db.deleteItem(id);
                             itemList.remove(getAdapterPosition());
                             notifyItemRemoved(getAdapterPosition());

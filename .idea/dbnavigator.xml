@@ -27,7 +27,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="cb16ce1c-f835-4f37-bb90-5d674099341c">
-      <console name="Connection" type="STANDARD" schema="" session="Main"><![CDATA[create table]]></console>
+      <console name="Connection" type="STANDARD" schema="" session="Main"><![CDATA[.mode csv]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -35,6 +35,8 @@
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="cb16ce1c-f835-4f37-bb90-5d674099341c">
+      <session name="Session 1" id="a5e91fff-2111-4596-aa33-f75a583b9b32" />
+      <session name="Session 1" id="a5e91fff-2111-4596-aa33-f75a583b9b32" />
       <session name="Session 1" id="a5e91fff-2111-4596-aa33-f75a583b9b32" />
     </connection>
   </component>

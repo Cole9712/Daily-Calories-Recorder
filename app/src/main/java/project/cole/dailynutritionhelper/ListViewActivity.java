@@ -5,31 +5,32 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.Layout;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.motion.widget.MotionLayout;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.apache.commons.lang3.math.NumberUtils;
-import org.w3c.dom.Text;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import project.cole.dailynutritionhelper.data.DatabaseHandler;
+import project.cole.dailynutritionhelper.data.UserMealDatabaseHandler;
 import project.cole.dailynutritionhelper.model.Item;
 import project.cole.dailynutritionhelper.ui.RecyclerViewAdapter;
 
@@ -46,11 +47,12 @@ public class ListViewActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerViewAdapter recyclerViewAdapter;
     private List<Item> itemList;
-    private DatabaseHandler databaseHandler;
+    private UserMealDatabaseHandler userMealDatabaseHandler;
     private FloatingActionButton fab;
     private AlertDialog.Builder builder;
     private AlertDialog alertDialog;
 
+    private BottomNavigationView bottomNavigationView;
     private TextView headerWelcome;
     private TextView caloriesView;
     private TextView carbohydratesView;
@@ -61,21 +63,34 @@ public class ListViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view);
-        databaseHandler = new DatabaseHandler(this);
+        userMealDatabaseHandler = new UserMealDatabaseHandler(this);
         recyclerView = findViewById(R.id.recycler);
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem menuItem = menu.getItem(0);
+        menuItem.setChecked(true);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                //TODO: ADD LISTENER CODE
+                return false;
+            }
+        });
+
         fab = findViewById(R.id.floatingActionButton);
         fab.setAlpha(0.35f);
         // set Background Animation
         MotionLayout thisLayout = (MotionLayout) findViewById(R.id.motionLayout);
-        animationDrawable = (AnimationDrawable) thisLayout.getBackground();
-        animationDrawable.setEnterFadeDuration(5000);
-        animationDrawable.setExitFadeDuration(2000);
+//        animationDrawable = (AnimationDrawable) thisLayout.getBackground();
+//        animationDrawable.setEnterFadeDuration(5000);
+//        animationDrawable.setExitFadeDuration(2000);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         itemList = new ArrayList<>();
 
-        itemList = databaseHandler.getAllItems();
+        itemList = userMealDatabaseHandler.getAllItems();
         recyclerViewAdapter = new RecyclerViewAdapter(this, itemList);
         recyclerView.setAdapter(recyclerViewAdapter);
         recyclerViewAdapter.notifyDataSetChanged();
@@ -152,7 +167,7 @@ public class ListViewActivity extends AppCompatActivity {
         item.setFoodQuantity(NumberUtils.toInt(itemQuantity.getText().toString().trim()));
         item.setFoodWeightInGrams(NumberUtils.toInt(itemWeight.getText().toString().trim()));
 
-        databaseHandler.addItem(item);
+        userMealDatabaseHandler.addItem(item);
 
         Snackbar.make(v, "Food Information Saved", Snackbar.LENGTH_SHORT).show();
         new Handler().postDelayed(new Runnable() {
@@ -165,21 +180,21 @@ public class ListViewActivity extends AppCompatActivity {
         }, 1000);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        if (animationDrawable != null && !animationDrawable.isRunning()) {
-            animationDrawable.start();
-        }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        if (animationDrawable != null && animationDrawable.isRunning()) {
-            animationDrawable.stop();
-        }
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//
+//        if (animationDrawable != null && !animationDrawable.isRunning()) {
+//            animationDrawable.start();
+//        }
+//    }
+//
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//
+//        if (animationDrawable != null && animationDrawable.isRunning()) {
+//            animationDrawable.stop();
+//        }
+//    }
 }
