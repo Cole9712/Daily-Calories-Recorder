@@ -64,7 +64,7 @@ public class CNFDatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         ArrayList<Item> results = new ArrayList<>();
         Cursor cursor = db.query(FOOD_TABLE_NAME,
-                new String[]{"FoodID", "FoodCode", "FoodGroupID", "FoodSourceID", "FoodDescription"},
+                new String[]{"FoodID", "FoodDescription"},
                 null,
                 null, null, null, "FoodID DESC");
 
@@ -72,7 +72,7 @@ public class CNFDatabaseHandler extends SQLiteOpenHelper {
             do {
                 Item itemToBePassed = new Item();
                 itemToBePassed.setFoodID(Integer.parseInt(cursor.getString(cursor.getColumnIndex("FoodID"))));
-                itemToBePassed.setFoodName(cursor.getString(cursor.getColumnIndex(Constants.KEY_FOOD_NAME)));
+                itemToBePassed.setFoodName(cursor.getString(cursor.getColumnIndex("FoodDescription")));
                 results.add(itemToBePassed);
             } while (cursor.moveToNext());
         }

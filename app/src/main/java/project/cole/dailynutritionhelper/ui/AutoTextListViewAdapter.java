@@ -1,6 +1,7 @@
 package project.cole.dailynutritionhelper.ui;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -25,7 +26,11 @@ public class AutoTextListViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return list.size();
+        if (list != null) {
+            return list.size();
+        } else {
+            return 0;
+        }
     }
 
     @Override
@@ -57,6 +62,12 @@ public class AutoTextListViewAdapter extends BaseAdapter {
     public void setData(ArrayList<Item> list, String data) {
         this.list = list;
         this.keyWord = data;
+        if (list != null) {
+            for (Item item : list) {
+                Log.d("Adapter", "setData: " + item.getFoodName());
+            }
+        }
+
         this.notifyDataSetChanged();
     }
 }
