@@ -6,6 +6,15 @@ public class Item {
     private int foodQuantity;
     private int foodWeightInGrams;
     private String dateItemAdded;
+    private int foodID;
+
+    public int getFoodID() {
+        return foodID;
+    }
+
+    public void setFoodID(int foodID) {
+        this.foodID = foodID;
+    }
 
     public Item(int id, String foodName, int foodQuantity, int foodWeightInGrams, String dateItemAdded) {
         this.id = id;

@@ -13,7 +13,7 @@
         android:layout_height="0dp"
         android:background="#ffffff"
         app:layoutDescription="@xml/scollable_scene"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:context=".ListViewActivity">
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             app:backgroundTint="@color/colorPrimaryDark"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/recycler"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.887"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +51,7 @@
     </androidx.constraintlayout.motion.widget.MotionLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
+        android:id="@+id/bottomNavigationView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

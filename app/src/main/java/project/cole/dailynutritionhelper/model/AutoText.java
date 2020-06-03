@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
-import android.widget.Adapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -13,25 +12,25 @@ import android.widget.PopupWindow;
 import java.util.ArrayList;
 
 import project.cole.dailynutritionhelper.R;
-import project.cole.dailynutritionhelper.ui.ListViewAdapter;
+import project.cole.dailynutritionhelper.ui.AutoTextListViewAdapter;
 
 public class AutoText implements PassedData {
     // Searched info
-    private ArrayList<String> myList = new ArrayList<>();
+    private ArrayList<Item> myList = new ArrayList<>();
     // list in database
-    private ArrayList<String> list;
+    private ArrayList<Item> list;
 
-    private ListViewAdapter listViewAdapter;
+    private AutoTextListViewAdapter autoTextListViewAdapter;
     private ListView listView;
     private EditText editText;
     private Activity activity;
     private PopupWindow popupWindow;
 
-    public AutoText(ArrayList<String> list, EditText editText, Activity activity) {
+    public AutoText(ArrayList<Item> list, EditText editText, Activity activity) {
         this.list = list;
         this.editText = editText;
         this.activity = activity;
-        listViewAdapter = new ListViewAdapter(activity, this);
+        autoTextListViewAdapter = new AutoTextListViewAdapter(activity, this);
         setPopupWindow();
         setListener();
     }
@@ -47,15 +46,15 @@ public class AutoText implements PassedData {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (myList != null) myList.clear();
                 if (s.length() > 0) {
-                    for (String string : list) {
-                        if (string.contains(s)) {
-                            myList.add(string);
+                    for (Item item : list) {
+                        if (item.getFoodName().contains(s)) {
+                            myList.add(item);
                         }
                     }
-                    listViewAdapter.setData(myList, String.valueOf(s));
+                    autoTextListViewAdapter.setData(myList, String.valueOf(s));
                     popupWindow.showAsDropDown(editText);
                 } else {
-                    listViewAdapter.setData(null, null);
+                    autoTextListViewAdapter.setData(null, null);
                 }
 
             }
@@ -72,7 +71,7 @@ public class AutoText implements PassedData {
         LinearLayout linearLayout = (LinearLayout) layoutInflater.inflate(R.layout.activity_auto_text, null);
 
         listView = (ListView) linearLayout.findViewById(R.id.popupListView);
-        listView.setAdapter(listViewAdapter);
+        listView.setAdapter(autoTextListViewAdapter);
 
         popupWindow = new PopupWindow();
         popupWindow.setWidth(editText.getWidth());

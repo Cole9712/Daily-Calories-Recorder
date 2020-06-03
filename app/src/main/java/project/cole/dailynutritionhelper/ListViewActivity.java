@@ -65,7 +65,8 @@ public class ListViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_view);
         userMealDatabaseHandler = new UserMealDatabaseHandler(this);
         recyclerView = findViewById(R.id.recycler);
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView1);
+
 
         Menu menu = bottomNavigationView.getMenu();
         MenuItem menuItem = menu.getItem(0);
@@ -74,6 +75,14 @@ public class ListViewActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 //TODO: ADD LISTENER CODE
+                switch (item.getItemId()) {
+                    case R.id.action_favorites:
+                        Intent intent0 = new Intent(ListViewActivity.this, FavListActivity.class);
+                        startActivity(intent0);
+                        break;
+                    case R.id.main_page:
+                        break;
+                }
                 return false;
             }
         });
