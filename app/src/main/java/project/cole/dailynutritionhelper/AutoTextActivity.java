@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import project.cole.dailynutritionhelper.data.CNFDatabaseHandler;
 import project.cole.dailynutritionhelper.model.AutoText;
 import project.cole.dailynutritionhelper.model.Item;
+import project.cole.dailynutritionhelper.ui.AutoTextListViewAdapter;
 
 public class AutoTextActivity extends AppCompatActivity {
     private ArrayList<Item> allFoodList;
@@ -19,6 +20,7 @@ public class AutoTextActivity extends AppCompatActivity {
     private EditText editText;
     private ListView listView;
     private AutoText autoText;
+    private AutoTextListViewAdapter autoTextListViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +29,9 @@ public class AutoTextActivity extends AppCompatActivity {
         cnfDatabaseHandler = new CNFDatabaseHandler(this);
         listView = findViewById(R.id.popupListView);
         editText = findViewById(R.id.searchText);
+        autoTextListViewAdapter = new AutoTextListViewAdapter(this, null);
 
+        listView.setAdapter(autoTextListViewAdapter);
         try {
             cnfDatabaseHandler.createDB();
             allFoodList = cnfDatabaseHandler.getAllItems();
@@ -35,7 +39,9 @@ public class AutoTextActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        autoText = new AutoText(allFoodList, editText, this);
+
+        autoText = new AutoText(allFoodList, editText, this, autoTextListViewAdapter);
+
 
     }
 }

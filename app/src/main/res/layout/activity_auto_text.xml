@@ -12,15 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/enter_item"
-        android:importantForAutofill="no" />
+        android:hint="@string/enter_item"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName" />
 
     <ListView
         android:id="@+id/popupListView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="4dp">
+        android:layout_height="match_parent"
+        android:padding="2dp">
 
     </ListView>
 

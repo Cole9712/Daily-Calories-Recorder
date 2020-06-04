@@ -1,6 +1,7 @@
 package project.cole.dailynutritionhelper.model;
 
 import android.app.Activity;
+import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -26,12 +27,16 @@ public class AutoText implements PassedData {
     private Activity activity;
     private PopupWindow popupWindow;
 
-    public AutoText(ArrayList<Item> list, EditText editText, Activity activity) {
+    public AutoText(ArrayList<Item> list, EditText editText, Activity activity, AutoTextListViewAdapter autoTextListViewAdapter) {
         this.list = list;
         this.editText = editText;
         this.activity = activity;
-        autoTextListViewAdapter = new AutoTextListViewAdapter(activity, this);
-        setPopupWindow();
+        this.autoTextListViewAdapter = autoTextListViewAdapter;
+        initial();
+    }
+
+    private void initial() {
+//        setPopupWindow();
         setListener();
     }
 
@@ -47,12 +52,12 @@ public class AutoText implements PassedData {
                 if (myList != null) myList.clear();
                 if (s.length() > 0) {
                     for (Item item : list) {
-                        if (item.getFoodName().contains(s)) {
+                        if (item.getFoodName().toLowerCase().contains(s.toString().toLowerCase())) {
                             myList.add(item);
                         }
                     }
                     autoTextListViewAdapter.setData(myList, String.valueOf(s));
-                    popupWindow.showAsDropDown(editText);
+//                    popupWindow.showAsDropDown(editText);
                 } else {
                     autoTextListViewAdapter.setData(null, null);
                 }
@@ -67,16 +72,16 @@ public class AutoText implements PassedData {
     }
 
     private void setPopupWindow() {
-        LayoutInflater layoutInflater = LayoutInflater.from(activity);
-        LinearLayout linearLayout = (LinearLayout) layoutInflater.inflate(R.layout.activity_auto_text, null);
+//        LayoutInflater layoutInflater = LayoutInflater.from(activity);
+//        LinearLayout linearLayout = (LinearLayout) layoutInflater.inflate(R.layout.activity_auto_text,null);
+//
+//        listView = (ListView) findViewById(R.id.popupListView);
+//        listView.setAdapter(autoTextListViewAdapter);
 
-        listView = (ListView) linearLayout.findViewById(R.id.popupListView);
-        listView.setAdapter(autoTextListViewAdapter);
-
-        popupWindow = new PopupWindow();
-        popupWindow.setWidth(editText.getWidth());
-        popupWindow.setHeight(220);
-        popupWindow.setContentView(linearLayout);
+//        popupWindow = new PopupWindow();
+//        popupWindow.setWidth(editText.getWidth());
+//        popupWindow.setHeight(220);
+//        popupWindow.setContentView(linearLayout);
     }
 
     @Override

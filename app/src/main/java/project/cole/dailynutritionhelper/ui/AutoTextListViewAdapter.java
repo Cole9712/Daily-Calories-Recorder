@@ -52,7 +52,7 @@ public class AutoTextListViewAdapter extends BaseAdapter {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                passedData.passingData(list.get(v.getId()).getFoodName());
+//                passedData.passingData(list.get(v.getId()).getFoodName());
             }
         });
 
@@ -66,6 +66,8 @@ public class AutoTextListViewAdapter extends BaseAdapter {
             for (Item item : list) {
                 Log.d("Adapter", "setData: " + item.getFoodName());
             }
+        } else {
+            Log.d("Adapter", "NULL");
         }
 
         this.notifyDataSetChanged();
