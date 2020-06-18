@@ -87,7 +87,7 @@ public class ListViewActivity extends AppCompatActivity {
             }
         });
 
-        fab = findViewById(R.id.floatingActionButton);
+        fab = findViewById(R.id.favFab);
         fab.setAlpha(0.35f);
         // set Background Animation
         MotionLayout thisLayout = (MotionLayout) findViewById(R.id.motionLayout);

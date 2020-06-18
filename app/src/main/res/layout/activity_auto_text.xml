@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="auto"
     android:orientation="vertical"
     tools:context=".AutoTextActivity">
 
@@ -12,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:focusableInTouchMode="true"
         android:hint="@string/enter_item"
         android:importantForAutofill="no"
         android:inputType="textPersonName" />

@@ -32,16 +32,11 @@ public class AutoTextActivity extends AppCompatActivity {
         autoTextListViewAdapter = new AutoTextListViewAdapter(this, null);
 
         listView.setAdapter(autoTextListViewAdapter);
-        try {
-            cnfDatabaseHandler.createDB();
-            allFoodList = cnfDatabaseHandler.getAllItems();
+        allFoodList = cnfDatabaseHandler.getAllItems();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         autoText = new AutoText(allFoodList, editText, this, autoTextListViewAdapter);
-
+        editText.requestFocus();
 
     }
 }

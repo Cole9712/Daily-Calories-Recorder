@@ -2,13 +2,14 @@ package project.cole.dailynutritionhelper;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ListView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -17,13 +18,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import project.cole.dailynutritionhelper.data.CNFDatabaseHandler;
-import project.cole.dailynutritionhelper.model.AutoText;
 import project.cole.dailynutritionhelper.model.Item;
+import project.cole.dailynutritionhelper.ui.RecyclerViewAdapter;
+import project.cole.dailynutritionhelper.ui.FavRecyclerViewAdapter;
 
 public class FavListActivity extends AppCompatActivity {
     private FloatingActionButton fab;
-    private ListView listView;
+    private RecyclerView listView;
+    private RecyclerViewAdapter recyclerViewAdapter;
     private BottomNavigationView bottomNavigationView;
+    private CNFDatabaseHandler cnfDatabaseHandler;
 
     private ArrayList<Item> favArrayList;
 
@@ -32,8 +36,14 @@ public class FavListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fav_list);
-        fab = findViewById(R.id.floatingActionButton);
-        listView = findViewById(R.id.favListView);
+        fab = findViewById(R.id.favFab);
+        listView = findViewById(R.id.favRecyclerView);
+        cnfDatabaseHandler = new CNFDatabaseHandler(this);
+        try {
+            cnfDatabaseHandler.createDB();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView2);
 
 
@@ -57,11 +67,19 @@ public class FavListActivity extends AppCompatActivity {
             }
         });
 
+        listView.setHasFixedSize(true);
+        listView.setLayoutManager(new LinearLayoutManager(this));
+        favArrayList = cnfDatabaseHandler.getAllFavItems();
+        FavRecyclerViewAdapter favRecyclerViewAdapter = new FavRecyclerViewAdapter(this, favArrayList);
+        listView.setAdapter(favRecyclerViewAdapter);
+        favRecyclerViewAdapter.notifyDataSetChanged();
+
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(FavListActivity.this, AutoTextActivity.class));
-                finish();
+
             }
         });
 
