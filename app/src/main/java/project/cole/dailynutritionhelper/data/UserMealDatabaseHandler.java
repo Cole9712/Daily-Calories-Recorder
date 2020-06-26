@@ -30,6 +30,8 @@ public class UserMealDatabaseHandler extends SQLiteOpenHelper {
         String CREATE_FOOD_LIST = "CREATE TABLE " + Constants.TABLE_MEALS_NAME + "(" +
                 Constants.KEY_ID + " INTEGER PRIMARY KEY," + Constants.KEY_FOOD_NAME + " TEXT," +
                 Constants.KEY_QUANTITY + " INTEGER," + Constants.KEY_WEIGHT + " INTEGER," +
+                Constants.KEY_KCAL + " INTEGER," + Constants.KEY_PROT + " REAL," +
+                Constants.KEY_FAT + " REAL," + Constants.KEY_CARB + " REAL," +
                 Constants.KEY_DATE + " LONG);";
 
         db.execSQL(CREATE_FOOD_LIST);
@@ -51,6 +53,10 @@ public class UserMealDatabaseHandler extends SQLiteOpenHelper {
         contentValues.put(Constants.KEY_QUANTITY, item.getFoodQuantity());
         contentValues.put(Constants.KEY_WEIGHT, item.getFoodWeightInGrams());
         contentValues.put(Constants.KEY_DATE, java.lang.System.currentTimeMillis());
+        contentValues.put(Constants.KEY_KCAL, item.getKcal());
+        contentValues.put(Constants.KEY_PROT, item.getProtein());
+        contentValues.put(Constants.KEY_FAT, item.getFat());
+        contentValues.put(Constants.KEY_CARB, item.getCarb());
 
         db.insert(Constants.TABLE_MEALS_NAME, null, contentValues);
 
@@ -87,7 +93,7 @@ public class UserMealDatabaseHandler extends SQLiteOpenHelper {
         List<Item> itemsToBePassed = new ArrayList<>();
 
         Cursor cursor = db.query(Constants.TABLE_MEALS_NAME,
-                new String[]{Constants.KEY_ID, Constants.KEY_FOOD_NAME, Constants.KEY_QUANTITY, Constants.KEY_WEIGHT, Constants.KEY_DATE},
+                new String[]{Constants.KEY_ID, Constants.KEY_FOOD_NAME, Constants.KEY_WEIGHT, Constants.KEY_DATE, Constants.KEY_KCAL},
                 null,
                 null, null, null, Constants.KEY_ID + " DESC");
 
@@ -96,8 +102,8 @@ public class UserMealDatabaseHandler extends SQLiteOpenHelper {
                 Item itemToBePassed = new Item();
                 itemToBePassed.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(Constants.KEY_ID))));
                 itemToBePassed.setFoodName(cursor.getString(cursor.getColumnIndex(Constants.KEY_FOOD_NAME)));
-                itemToBePassed.setFoodQuantity(cursor.getInt(cursor.getColumnIndex(Constants.KEY_QUANTITY)));
                 itemToBePassed.setFoodWeightInGrams(cursor.getInt(cursor.getColumnIndex(Constants.KEY_WEIGHT)));
+                itemToBePassed.setKcal(cursor.getInt(cursor.getColumnIndex(Constants.KEY_KCAL)));
                 DateFormat dateFormat = DateFormat.getDateInstance();
                 // formate date
                 String formatDate = dateFormat.format(new Date(cursor.getLong(cursor.getColumnIndex(Constants.KEY_DATE))).getTime()); // Oct 23, 2020

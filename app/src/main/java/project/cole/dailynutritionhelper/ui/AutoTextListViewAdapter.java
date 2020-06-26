@@ -87,6 +87,7 @@ public class AutoTextListViewAdapter extends BaseAdapter {
                     public void onClick(View v) {
                         cnfDatabaseHandler.addFavItem(item);
                         alertDialog.dismiss();
+                        activity.startActivity(new Intent(activity, FavListActivity.class));
                         activity.finish();
 
                     }

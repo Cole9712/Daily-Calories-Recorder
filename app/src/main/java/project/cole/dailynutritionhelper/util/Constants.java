@@ -12,4 +12,9 @@ public class Constants {
     public static final String KEY_QUANTITY = "quantity_number";
     public static final String KEY_WEIGHT = "weight";
     public static final String KEY_DATE = "date_added";
+    public static final String KEY_FOODID = "FoodID";
+    public static final String KEY_KCAL = "Kcal";
+    public static final String KEY_PROT = "Protein";
+    public static final String KEY_FAT = "Fat";
+    public static final String KEY_CARB = "Carb";
 }

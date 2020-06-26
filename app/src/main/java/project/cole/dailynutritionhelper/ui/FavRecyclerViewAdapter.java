@@ -17,6 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.text.MessageFormat;
 import java.util.List;
 
@@ -92,7 +94,8 @@ public class FavRecyclerViewAdapter extends RecyclerView.Adapter<FavRecyclerView
             editButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    //TODO:
+                    Snackbar.make(v, "Under Development", Snackbar.LENGTH_SHORT).show();
                 }
             });
 

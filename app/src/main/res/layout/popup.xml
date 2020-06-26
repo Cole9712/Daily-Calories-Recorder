@@ -1,79 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/popupLayout_id"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <RelativeLayout
-            android:background="#FFFFFF"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#FFFFFF"
             android:padding="25dp">
 
             <TextView
                 android:id="@+id/title"
-                android:text="@string/enter_item"
-                android:textStyle="italic"
-                android:textSize="18sp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="@string/enter_item"
+                android:textSize="18sp"
+                android:textStyle="italic" />
 
             <EditText
                 android:id="@+id/foodItem"
-                android:paddingVertical="16dp"
-                android:layout_below="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/title"
                 android:hint="@string/food_name_here"
+                android:paddingVertical="16dp"
                 tools:ignore="Autofill" />
 
             <EditText
-                android:id="@+id/itemQuantity"
+                android:id="@+id/foodProtein"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/foodItem"
-                android:hint="@string/quantity_goes_here"
-                android:inputType="numberSigned"
-                android:paddingTop="30dp"
-                android:paddingBottom="16dp"
-                android:autofillHints="0"/>
+                android:hint="@string/protein_in_grams_100g"
+                android:paddingVertical="16dp" />
 
-            <TextView
-                android:id="@+id/or"
-                android:text="@string/or"
-                android:textStyle="italic|bold"
-                android:textSize="22sp"
-                android:layout_below="@id/itemQuantity"
-                android:layout_centerHorizontal="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/foodFat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/foodProtein"
+                android:hint="@string/fat_in_grams_100g"
+                android:paddingVertical="16dp" />
+
+
+            <EditText
+                android:id="@+id/foodCarb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/foodFat"
+                android:hint="@string/carbohydrate_in_grams_100g"
+                android:paddingVertical="16dp" />
+
+
+            <EditText
+                android:id="@+id/foodKcal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/foodCarb"
+                android:hint="Calories / 100g"
+                android:paddingVertical="16dp" />
 
             <EditText
                 android:id="@+id/itemWeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/or"
+                android:layout_below="@+id/foodKcal"
+                android:autofillHints="0"
                 android:hint="@string/enter_item_weight_in_gram"
                 android:inputType="numberSigned"
-                android:paddingVertical="16dp"
-                android:autofillHints="0"/>
+                android:paddingVertical="16dp" />
 
             <Button
                 android:id="@+id/saveButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/itemWeight"
+                android:layout_below="@id/checkBox"
                 android:background="@color/colorAccent"
                 android:paddingTop="0dp"
                 android:text="@string/save"
 
+                android:textSize="16sp" />
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/itemWeight"
+                android:layout_marginVertical="8dp"
+                android:text="@string/save_this_food_to_my_favourite"
                 android:textSize="16sp" />
 
         </RelativeLayout>

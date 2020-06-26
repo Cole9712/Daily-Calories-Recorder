@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="25dp">
+
+            <Button
+                android:id="@+id/popupFirstButton"
+                android:paddingVertical="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:background="@color/colorPrimaryDark"
+                android:textColor="#ffffff"
+                android:text="@string/choose_from_my_favourite_list" />
+
+            <Button
+                android:id="@+id/popupSecondButton"
+                android:paddingVertical="20dp"
+                android:layout_marginVertical="16dp"
+                android:background="@color/colorAccent"
+                android:layout_below="@+id/popupFirstButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/input_food_manually"
+                android:textAllCaps="false" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

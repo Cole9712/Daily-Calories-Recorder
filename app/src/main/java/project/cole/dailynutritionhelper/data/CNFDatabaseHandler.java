@@ -90,7 +90,7 @@ public class CNFDatabaseHandler extends SQLiteOpenHelper {
 
     public ArrayList<Item> getAllFavItems() {
         SQLiteDatabase db = getReadableDatabase();
-        String CREATE_FAV_TABLE = "CREATE TABLE if not exists " + FAV_TABLE_NAME + "(FoodID INTEGER PRIMARY KEY, FoodName TEXT, FoodKcal TEXT);";
+        String CREATE_FAV_TABLE = "CREATE TABLE if not exists " + FAV_TABLE_NAME + "(FoodID INTEGER PRIMARY KEY, FoodName TEXT, FoodKcal TEXT, FoodProt TEXT, FoodFat TEXT, FoodCarb TEXT, IsManually INTEGER);";
         db.execSQL(CREATE_FAV_TABLE);
         ArrayList<Item> results = new ArrayList<>();
         Cursor cursor = db.query(FAV_TABLE_NAME,
@@ -192,10 +192,18 @@ public class CNFDatabaseHandler extends SQLiteOpenHelper {
 
     public void addFavItem(Item item) {
         SQLiteDatabase db = getWritableDatabase();
-        String CREATE_FAV_TABLE = "CREATE TABLE if not exists " + FAV_TABLE_NAME + "(FoodID INTEGER PRIMARY KEY, FoodName TEXT, FoodKcal TEXT);";
+        String CREATE_FAV_TABLE = "CREATE TABLE if not exists " + FAV_TABLE_NAME + "(FoodID INTEGER PRIMARY KEY, FoodName TEXT, FoodKcal TEXT, FoodProt TEXT, FoodFat TEXT, FoodCarb TEXT, IsManually INTEGER);";
         db.execSQL(CREATE_FAV_TABLE);
         ContentValues contentValues = new ContentValues();
-        contentValues.put("FoodID", item.getFoodID());
+        if (item.isManualItem()) {
+            contentValues.put("FoodProt", item.getProtein());
+            contentValues.put("FoodFat", item.getFat());
+            contentValues.put("FoodCarb", item.getCarb());
+            contentValues.put("IsManually", "1");
+        } else {
+            contentValues.put("FoodID", item.getFoodID());
+            contentValues.put("IsManually", "0");
+        }
         contentValues.put("FoodName", item.getFoodName());
         contentValues.put("FoodKcal", item.getKcal());
         db.insert(FAV_TABLE_NAME, null, contentValues);

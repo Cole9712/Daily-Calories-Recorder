@@ -11,7 +11,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="add_your_meal">Add your meal...</string>
     <string name="enter_item">Enter item</string>
-    <string name="food_name_here">Food name here</string>
+    <string name="food_name_here">Food Description here</string>
     <string name="quantity_goes_here">Enter item quantity</string>
     <string name="or">OR</string>
     <string name="enter_item_weight_in_gram">Enter item weight (in grams)</string>
@@ -46,4 +46,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="adding_alert">Add this item to Favourite?</string>
+    <string name="choose_from_my_favourite_list">Choose From My Favourite</string>
+    <string name="input_food_manually">Input Food Manually</string>
+    <string name="save_this_food_to_my_favourite">Save This Food To My Favourite</string>
+    <string name="carbohydrate_in_grams_100g">Carbohydrate (in grams) / 100g</string>
+    <string name="fat_in_grams_100g">Fat (in grams) / 100g</string>
+    <string name="protein_in_grams_100g">Protein (in grams) / 100g</string>
 </resources>

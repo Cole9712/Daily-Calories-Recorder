@@ -105,7 +105,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     inflater = LayoutInflater.from(context);
                     View view = inflater.inflate(R.layout.popup, null);
                     foodItem = view.findViewById(R.id.foodItem);
-                    itemQuantity = view.findViewById(R.id.itemQuantity);
+//                    itemQuantity = view.findViewById(R.id.itemQuantity);
                     itemWeight = view.findViewById(R.id.itemWeight);
                     saveButton = view.findViewById(R.id.saveButton);
 

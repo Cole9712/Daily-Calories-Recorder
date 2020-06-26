@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,6 +29,7 @@ public class FavListActivity extends AppCompatActivity {
     private RecyclerViewAdapter recyclerViewAdapter;
     private BottomNavigationView bottomNavigationView;
     private CNFDatabaseHandler cnfDatabaseHandler;
+    public static final String tableName = "user_info";
 
     private ArrayList<Item> favArrayList;
 
@@ -36,6 +38,8 @@ public class FavListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fav_list);
+
+
         fab = findViewById(R.id.favFab);
         listView = findViewById(R.id.favRecyclerView);
         cnfDatabaseHandler = new CNFDatabaseHandler(this);
@@ -79,7 +83,7 @@ public class FavListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(FavListActivity.this, AutoTextActivity.class));
-
+                finish();
             }
         });
 

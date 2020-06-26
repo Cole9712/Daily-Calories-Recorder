@@ -1,5 +1,6 @@
 package project.cole.dailynutritionhelper;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -168,8 +169,8 @@ public class UserInfoActivity extends AppCompatActivity {
         editor.apply();
 
 
+        startActivity(new Intent(UserInfoActivity.this, ListViewActivity.class));
         finish();
-
     }
 
     @Override

@@ -3,6 +3,7 @@ package project.cole.dailynutritionhelper.model;
 import android.app.Application;
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 
 import project.cole.dailynutritionhelper.data.CNFDatabaseHandler;
@@ -10,6 +11,16 @@ import project.cole.dailynutritionhelper.data.CNFDatabaseHandler;
 
 public class Item extends Application {
     private int id;
+
+    private boolean manualItem;
+
+    public boolean isManualItem() {
+        return manualItem;
+    }
+
+    public void setManualItem(boolean manualItem) {
+        this.manualItem = manualItem;
+    }
 
     private String foodName;
     private int foodQuantity;
@@ -85,6 +96,11 @@ public class Item extends Application {
     }
 
     public Item() {
+        this.manualItem = false;
+        this.kcal = 0;
+        this.carb = 0;
+        this.fat = 0;
+        this.protein = 0;
     }
 
     public int getId() {
@@ -125,5 +141,11 @@ public class Item extends Application {
 
     public void setDateItemAdded(String dateItemAdded) {
         this.dateItemAdded = dateItemAdded;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return this.foodName;
     }
 }
