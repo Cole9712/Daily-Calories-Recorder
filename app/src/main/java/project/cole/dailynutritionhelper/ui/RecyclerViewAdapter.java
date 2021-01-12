@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -103,16 +104,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     final Item item = itemList.get(getAdapterPosition());
                     confirmBuilder = new AlertDialog.Builder(context);
                     inflater = LayoutInflater.from(context);
-                    View view = inflater.inflate(R.layout.popup, null);
-                    foodItem = view.findViewById(R.id.foodItem);
+                    View view = inflater.inflate(R.layout.list_choose_popup, null);
+                    Spinner spinner = view.findViewById(R.id.favSpinner);
 //                    itemQuantity = view.findViewById(R.id.itemQuantity);
-                    itemWeight = view.findViewById(R.id.itemWeight);
-                    saveButton = view.findViewById(R.id.saveButton);
+                    itemWeight = view.findViewById(R.id.itemWeight2);
+                    saveButton = view.findViewById(R.id.saveButton2);
 
                     saveButton.setText(R.string.update);
-                    foodItem.setText(item.getFoodName());
-                    itemQuantity.setText(String.valueOf(item.getFoodQuantity()));
                     itemWeight.setText(String.valueOf(item.getFoodWeightInGrams()));
+                    spinner.setVisibility(View.INVISIBLE);
 
                     confirmBuilder.setView(view);
                     confirmDialog = confirmBuilder.create();
@@ -120,14 +120,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     saveButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            if (foodItem.getText().toString().isEmpty()) {
-                                Snackbar.make(v, "Please Enter the Food Name", Snackbar.LENGTH_SHORT).show();
-                            } else if (itemQuantity.getText().toString().isEmpty() && itemWeight.getText().toString().isEmpty()) {
-                                Snackbar.make(v, "Please Enter Quantity/Weight", Snackbar.LENGTH_SHORT).show();
+                            if (itemWeight.getText().toString().isEmpty()) {
+                                Snackbar.make(v, "Please Enter Weight", Snackbar.LENGTH_SHORT).show();
                             } else {
                                 item.setId(item.getId());
-                                item.setFoodName(foodItem.getText().toString().trim());
-                                item.setFoodQuantity(NumberUtils.toInt(itemQuantity.getText().toString().trim()));
+//                                item.setFoodQuantity(NumberUtils.toInt(itemQuantity.getText().toString().trim()));
                                 item.setFoodWeightInGrams(NumberUtils.toInt(itemWeight.getText().toString().trim()));
 
                                 UserMealDatabaseHandler userMealDatabaseHandler = new UserMealDatabaseHandler(context);

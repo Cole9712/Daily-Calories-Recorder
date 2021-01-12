@@ -92,6 +92,10 @@ public class ListViewActivity extends AppCompatActivity {
                         break;
                     case R.id.main_page:
                         break;
+                    case R.id.action_me:
+                        Intent intent1 = new Intent(ListViewActivity.this, ProfileActivity.class);
+                        startActivity(intent1);
+                        break;
                 }
                 return false;
             }

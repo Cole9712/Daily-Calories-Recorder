@@ -118,8 +118,8 @@ public class UserMealDatabaseHandler extends SQLiteOpenHelper {
     public int updateItem(Item item) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(Constants.KEY_FOOD_NAME, item.getFoodName());
-        contentValues.put(Constants.KEY_QUANTITY, item.getFoodQuantity());
+//        contentValues.put(Constants.KEY_FOOD_NAME, item.getFoodName());
+//        contentValues.put(Constants.KEY_QUANTITY, item.getFoodQuantity());
         contentValues.put(Constants.KEY_WEIGHT, item.getFoodWeightInGrams());
         contentValues.put(Constants.KEY_DATE, java.lang.System.currentTimeMillis());
         int returnedValue = db.update(Constants.TABLE_MEALS_NAME, contentValues, Constants.KEY_ID + "=?",

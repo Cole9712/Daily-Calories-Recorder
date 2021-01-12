@@ -19,7 +19,7 @@
         app:showAsAction="withText" />
 
     <item
-        android:id="@+id/action_nearby"
+        android:id="@+id/action_me"
         android:enabled="true"
         android:icon="@drawable/ic_person"
         android:title="Me"

@@ -65,7 +65,10 @@ public class FavListActivity extends AppCompatActivity {
                         Intent intent0 = new Intent(FavListActivity.this, ListViewActivity.class);
                         startActivity(intent0);
                         break;
-
+                    case R.id.action_me:
+                        Intent intent1 = new Intent(FavListActivity.this, ProfileActivity.class);
+                        startActivity(intent1);
+                        break;
                 }
                 return false;
             }
