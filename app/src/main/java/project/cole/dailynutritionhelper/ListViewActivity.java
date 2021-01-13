@@ -151,7 +151,7 @@ public class ListViewActivity extends AppCompatActivity {
         fatsView.setText(MessageFormat.format("{0} – {1} g", sharedPreferences.getInt("minFatsNeed", 0),
                 sharedPreferences.getInt("maxFatsNeed", 0)));
 
-        //TODO:adding intake calories into caloriesView
+
         int currentCalories = 0;
         DateFormat dateFormat = DateFormat.getDateInstance();
         String todayDate = dateFormat.format(new Date((long) java.lang.System.currentTimeMillis()).getTime());
